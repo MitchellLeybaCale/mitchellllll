@@ -288,6 +288,20 @@
             line-height: 1.7;
         }
 
+        .experience-bullets {
+            color: #4b5563;
+            line-height: 1.7;
+            padding-left: 1.25rem;
+        }
+
+        .experience-bullets li {
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-bullets li:last-child {
+            margin-bottom: 0;
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -387,7 +401,6 @@
             margin-top: 4rem;
         }
 
-        /* Show/hide sections - Remove this since we want all sections visible */
         .section-content {
             display: block;
         }
@@ -396,7 +409,7 @@
         html {
             scroll-behavior: smooth;
         }
-        
+
         .section-content {
             scroll-margin-top: 100px; /* Account for fixed nav */
         }
@@ -404,24 +417,24 @@
             .nav-links {
                 gap: 1rem;
             }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-buttons {
                 flex-direction: column;
             }
-            
+
             .section {
                 padding: 2rem;
                 margin: 2rem 0;
             }
-            
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .experience-header {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -452,7 +465,7 @@
             Passionate about leveraging data-driven insights to solve complex business challenges. With a strong foundation in finance and analytics, I bring both entrepreneurial experience and technical expertise to every project.
         </p>
         <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">>
+            <a href="#contact" class="btn btn-primary">
                 <i class="fas fa-envelope"></i>
                 Contact Me
             </a>
@@ -472,12 +485,12 @@
                 </div>
                 <h2>Education</h2>
             </div>
-            
+
             <div class="education-content">
                 <h3>BS in Business Administration</h3>
                 <p class="education-meta">University of Colorado Boulder - Leeds School of Business</p>
                 <p class="education-meta">Emphasis in Finance and Data Analytics</p>
-                
+
                 <div class="coursework">
                     <h4>Relevant Coursework:</h4>
                     <div class="course-tags">
@@ -500,18 +513,25 @@
                 </div>
                 <h2>Experience</h2>
             </div>
-            
+
             <div class="experience-item">
                 <div class="experience-header">
                     <div class="experience-title">
                         <h3>Data Analytics Intern</h3>
                         <p class="experience-company">Allied Trust Insurance • Tampa, Florida</p>
                     </div>
-                    <div class="experience-date">Summer 2025</div>
+                    <div class="experience-date">Summer 2025 &amp; Summer 2026</div>
                 </div>
-                <p class="experience-description">
-                    Worked on data analytics initiatives specific to both the insurance industry and Allied Trust operations. Built and translated pricing models in Earnix while developing full stack capabilities, connecting applications to APIs, managing security and costs across environments, and leveraging AI agents to improve development efficiency. Expanded technical proficiency in SQL, Go, HTML, JavaScript, and CSS, and enhanced team collaboration by creating internal GitHub repositories for shared development projects.
-                </p>
+                <ul class="experience-bullets">
+                    <li>Built and translated pricing models in Earnix, applying data extraction, engineering, and preparation techniques.</li>
+                    <li>Authored beginner-to-intermediate SQL queries for data retrieval, model development, and analytics workflows.</li>
+                    <li>Applied AI techniques including natural language processing (NLP) and prompt engineering to automate insights and enhance decision-making.</li>
+                    <li>Developed full-stack skills (Go, HTML, JavaScript, CSS) while integrating APIs and optimizing system performance.</li>
+                    <li>Leveraged AI-driven tools to support text analysis, dashboard creation, and internal analytics automation.</li>
+                    <li>Improved collaboration by building GitHub repositories for cross-functional engineering and analytics teams.</li>
+                    <li>Authored full exposure for all 16 products, including products that have not entered a systems transition.</li>
+                    <li>Built and trained an Earnix-specific AI agent to accelerate configuration and product build.</li>
+                </ul>
             </div>
 
             <div class="experience-item">
@@ -549,7 +569,7 @@
                 </div>
                 <h2>Skills</h2>
             </div>
-            
+
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Technical Skills</h3>
@@ -598,11 +618,11 @@
                 </div>
                 <h2>Get In Touch</h2>
             </div>
-            
+
             <p class="contact-description">
                 I'm always open to discussing new opportunities, collaborations, or just connecting. Feel free to reach out through any of the channels below.
             </p>
-            
+
             <div class="contact-grid">
                 <div class="contact-card">
                     <i class="fas fa-envelope"></i>
@@ -620,7 +640,7 @@
                     <p>github.com/mitchellcale</p>
                 </div>
             </div>
-            
+
             <div class="contact-button">
                 <a href="mailto:mleybacale@gmail.com" class="btn btn-primary">
                     <i class="fas fa-envelope"></i>
@@ -631,7 +651,7 @@
     </div>
 
     <footer class="footer">
-        <p>© 2025 Mitchell Leyba Cale. All rights reserved.</p>
+        <p>© 2026 Mitchell Leyba Cale. All rights reserved.</p>
     </footer>
 
     <script>
@@ -646,7 +666,7 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href').substring(1);
                     const targetSection = document.getElementById(targetId);
-                    
+
                     if (targetSection) {
                         targetSection.scrollIntoView({
                             behavior: 'smooth',
@@ -656,10 +676,10 @@
                 });
             });
 
-            // Add smooth scroll behavior and active state tracking
+            // Track active nav link on scroll
             function updateActiveNav() {
                 let currentSection = '';
-                
+
                 sections.forEach(section => {
                     const rect = section.getBoundingClientRect();
                     if (rect.top <= 150 && rect.bottom >= 150) {
@@ -667,7 +687,6 @@
                     }
                 });
 
-                // Update active nav link
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     const linkTarget = link.getAttribute('href').substring(1);
@@ -677,10 +696,7 @@
                 });
             }
 
-            // Listen for scroll events
             window.addEventListener('scroll', updateActiveNav);
-            
-            // Initial call
             updateActiveNav();
         });
     </script>
